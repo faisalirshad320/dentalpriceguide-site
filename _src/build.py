@@ -442,14 +442,13 @@ def site_files():
         {"src": "/assets/img/icon-512.png", "sizes": "512x512", "type": "image/png"}]}))
     open(os.path.join(OUT, "favicon.svg"), "w").write(LOGO.replace(' class="mark"', ' xmlns="http://www.w3.org/2000/svg"').replace(' width="30" height="30" aria-hidden="true"', ''))
     open(os.path.join(OUT, ".htaccess"), "w").write(HTACCESS)
-    open(os.path.join(OUT, "index.php"), "w").write("<?php http_response_code(404); readfile(__DIR__.'/404.html');\n")
     nf = page_shell(f"Page not found | {SITE}", "This page does not exist.", "/404/", [],
                     '<article class="post static"><h1>Page not found</h1><p>That page does not exist or has moved. Try the <a href="/">home page</a> or one of these sections:</p><ul>'
                     + "".join(f'<li><a href="/{c[0]}/">{esc(c[1])}</a></li>' for c in CATEGORIES) + "</ul></article>", "website", "noindex,follow")
     open(os.path.join(OUT, "404.html"), "w").write(nf)
 
 HTACCESS = r"""# Dental Price Guide — Apache config for Cloudways
-DirectoryIndex index.html index.php
+DirectoryIndex index.html
 RewriteEngine On
 RewriteCond %{HTTPS} !=on
 RewriteCond %{HTTP:X-Forwarded-Proto} !=https

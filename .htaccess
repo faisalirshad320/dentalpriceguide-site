@@ -1,5 +1,5 @@
 # Dental Price Guide — Apache config for Cloudways
-DirectoryIndex index.html index.php
+DirectoryIndex index.html
 RewriteEngine On
 RewriteCond %{HTTPS} !=on
 RewriteCond %{HTTP:X-Forwarded-Proto} !=https
