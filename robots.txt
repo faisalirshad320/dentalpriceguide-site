@@ -1,0 +1,92 @@
+# Dental Price Guide — all search and AI answer-engine crawlers are welcome.
+User-agent: *
+Allow: /
+Disallow: /_src/
+Disallow: /.github/
+
+User-agent: Googlebot
+Allow: /
+Disallow: /_src/
+Disallow: /.github/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /_src/
+Disallow: /.github/
+
+User-agent: GPTBot
+Allow: /
+Disallow: /_src/
+Disallow: /.github/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /_src/
+Disallow: /.github/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /_src/
+Disallow: /.github/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /_src/
+Disallow: /.github/
+
+User-agent: Claude-Web
+Allow: /
+Disallow: /_src/
+Disallow: /.github/
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /_src/
+Disallow: /.github/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /_src/
+Disallow: /.github/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /_src/
+Disallow: /.github/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /_src/
+Disallow: /.github/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /_src/
+Disallow: /.github/
+
+User-agent: CCBot
+Allow: /
+Disallow: /_src/
+Disallow: /.github/
+
+User-agent: Amazonbot
+Allow: /
+Disallow: /_src/
+Disallow: /.github/
+
+User-agent: Bytespider
+Allow: /
+Disallow: /_src/
+Disallow: /.github/
+
+User-agent: Meta-ExternalAgent
+Allow: /
+Disallow: /_src/
+Disallow: /.github/
+
+User-agent: cohere-ai
+Allow: /
+Disallow: /_src/
+Disallow: /.github/
+
+Sitemap: https://www.dentalpriceguide.com/sitemap.xml
