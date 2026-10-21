@@ -1,0 +1,62 @@
+name: Daily page release
+
+# Publishes the next queued pages (default 3/day) so new content reaches Google at a
+# steady, natural pace instead of all at once. Each run: build.py --release N, commit,
+# push, ping IndexNow, and (if Cloudways secrets are set) deploy + purge cache.
+# Without Cloudways secrets, the daily scheduled task on Faisal's PC pulls on Cloudways.
+
+on:
+  schedule:
+    - cron: "30 1 * * *"   # 06:30 PKT
+  workflow_dispatch:
+    inputs:
+      count:
+        description: "Pages to release"
+        default: "3"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      COUNT: ${{ github.event.inputs.count || '3' }}
+      HOST: www.dentalpriceguide.com
+      INDEXNOW_KEY: b7d41e9c2a6f48e3a1c05d9e7f2b8a64
+      CW_EMAIL: ${{ secrets.CLOUDWAYS_EMAIL }}
+      CW_API_KEY: ${{ secrets.CLOUDWAYS_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install pillow
+      - name: Release next pages and rebuild
+        id: rel
+        run: |
+          OUT=$(python3 _src/build.py --release "$COUNT")
+          echo "$OUT"
+          SLUGS=$(echo "$OUT" | sed -n 's/^released [0-9]*: \(.*\)  |.*/\1/p' | tr -d ' ' | sed 's/^-$//')
+          echo "slugs=$SLUGS" >> "$GITHUB_OUTPUT"
+      - name: Commit and push
+        if: steps.rel.outputs.slugs != ''
+        run: |
+          git config user.name "dpg-release-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git commit -m "Release: ${{ steps.rel.outputs.slugs }}"
+          git push
+      - name: Deploy on Cloudways (optional)
+        if: steps.rel.outputs.slugs != '' && env.CW_EMAIL != ''
+        run: |
+          T=$(curl -s -X POST https://api.cloudways.com/api/v1/oauth/access_token -d "email=$CW_EMAIL" -d "api_key=$CW_API_KEY" | grep -o '"access_token":"[^"]*' | cut -d'"' -f4)
+          curl -s -X POST https://api.cloudways.com/api/v1/git/pull -H "Authorization: Bearer $T" -d server_id=1638726 -d app_id=6739640 -d branch_name=main
+          sleep 60
+          curl -s -X POST https://api.cloudways.com/api/v1/app/manage/varnish -H "Authorization: Bearer $T" -d server_id=1638726 -d app_id=6739640 -d action=purge
+      - name: IndexNow (Bing, Yandex, Seznam, Naver)
+        if: steps.rel.outputs.slugs != ''
+        continue-on-error: true
+        run: |
+          URLS=$(echo "${{ steps.rel.outputs.slugs }}" | tr ',' '\n' | sed "s#.*#\"https://$HOST/&/\"#" | paste -sd, -)
+          curl -s -o /dev/null -w "IndexNow %{http_code}\n" -X POST https://api.indexnow.org/indexnow -H "Content-Type: application/json" \
+            -d "{\"host\":\"$HOST\",\"key\":\"$INDEXNOW_KEY\",\"keyLocation\":\"https://$HOST/$INDEXNOW_KEY.txt\",\"urlList\":[$URLS,\"https://$HOST/sitemap.xml\"]}"
