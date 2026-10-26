@@ -1,6 +1,6 @@
 name: Daily page release
 
-# Publishes the next queued pages (default 3/day) so new content reaches Google at a
+# Publishes the next queued pages (default 5/day) so new content reaches Google at a
 # steady, natural pace instead of all at once. Each run: build.py --release N, commit,
 # push, ping IndexNow, and (if Cloudways secrets are set) deploy + purge cache.
 # Without Cloudways secrets, the daily scheduled task on Faisal's PC pulls on Cloudways.
@@ -12,7 +12,7 @@ on:
     inputs:
       count:
         description: "Pages to release"
-        default: "3"
+        default: "5"
 
 permissions:
   contents: write
@@ -21,7 +21,7 @@ jobs:
   release:
     runs-on: ubuntu-latest
     env:
-      COUNT: ${{ github.event.inputs.count || '3' }}
+      COUNT: ${{ github.event.inputs.count || '5' }}
       HOST: www.dentalpriceguide.com
       INDEXNOW_KEY: b7d41e9c2a6f48e3a1c05d9e7f2b8a64
       CW_EMAIL: ${{ secrets.CLOUDWAYS_EMAIL }}
