@@ -29,8 +29,11 @@ TAGLINE = "What dental work really costs, from published claims and survey data"
 BRAND = "#0f766e"
 PUBLISHED = "2026-10-21"
 REVIEWER = "Dr. Faisal Irshad"
-REVIEWER_SUFFIX = "MBBS"
-REVIEWER_TITLE = "Medical Doctor"
+REVIEWER_SUFFIX = "MBBS, M.Phil Chemical Pathology"
+REVIEWER_TITLE = "Pathologist; Associate Professor of Pathology"
+REVIEWER_ORCID = "https://orcid.org/0009-0004-4706-9619"
+REVIEWER_LINKEDIN = "https://www.linkedin.com/in/dr-faisal-irshad-787066410"
+REVIEWER_SAMEAS = [REVIEWER_ORCID, REVIEWER_LINKEDIN, "https://labmeans.com/about/", "https://icd10guide.com/author/dr-faisal-irshad/", "https://rxcostguide.com/about/dr-faisal-irshad/", "https://www.cosmeticcostguide.com/authors/faisal-irshad/"]
 PMDC = "PMDC 54440-S"
 CONTACT_EMAIL = "contact@dentalpriceguide.com"
 AD_CLIENT = "ca-pub-8301212931863478"
@@ -98,8 +101,12 @@ ORG = {"@type": "Organization", "@id": HOST + "/#org", "name": SITE, "url": HOST
 WEBSITE = {"@type": "WebSite", "@id": HOST + "/#website", "name": SITE, "url": HOST + "/",
            "publisher": {"@id": HOST + "/#org"}, "inLanguage": "en-US"}
 AUTHOR = {"@type": "Person", "@id": HOST + "/#reviewer", "name": REVIEWER, "honorificSuffix": REVIEWER_SUFFIX,
-          "jobTitle": REVIEWER_TITLE, "identifier": PMDC, "url": HOST + "/about/",
-          "description": "Medical doctor (MBBS) with 18 years of clinical and laboratory-medicine experience. Reviews pages for medical accuracy; not a dentist."}
+          "jobTitle": REVIEWER_TITLE, "url": HOST + "/about/#medical-review",
+          "identifier": {"@type": "PropertyValue", "propertyID": "PMDC", "value": PMDC.replace("PMDC ", "")},
+          "affiliation": {"@type": "Organization", "name": "Suleman Roshan Medical College Hospital"},
+          "knowsAbout": ["Clinical pathology", "Laboratory medicine", "Patient safety", "US dental procedure pricing"],
+          "sameAs": REVIEWER_SAMEAS,
+          "description": "Pathologist (MBBS, M.Phil Chemical Pathology) with 18 years of clinical and laboratory-medicine experience. Reviews pages for medical accuracy and safety; not a dentist."}
 
 def graph(nodes):
     return '<script type="application/ld+json">' + json.dumps({"@context": "https://schema.org", "@graph": nodes}, ensure_ascii=False) + "</script>"
@@ -366,7 +373,7 @@ def static_pages():
             f"""<h1>About {SITE}</h1>
 <p class="lede">{SITE} explains what common dental treatments cost in the United States, what changes the price, and how insurance and payment options affect what you pay.</p>
 <h2>Why this site exists</h2><p>Dental prices are hard to find before you sit in the chair. Most dental offices do not publish fees, and insurers publish their data in different places with different definitions. We collect published cost data in one place, label where each number comes from, and explain it in plain English.</p>
-<h2>Medical review</h2><p>Pages are medically reviewed by <strong>{REVIEWER}, {REVIEWER_SUFFIX}</strong> ({PMDC}), a medical doctor with 18 years of clinical and laboratory-medicine experience. Dr. Irshad checks pages for medical accuracy and safety advice. He is a physician, not a dentist, and he does not set or verify individual dental fees; prices come from the published sources listed on our <a href="/methodology/">methodology page</a>.</p>
+<h2 id="medical-review">Medical review</h2><p>Pages are medically reviewed by <strong>{REVIEWER}, {REVIEWER_SUFFIX}</strong> ({PMDC}), a pathologist and Associate Professor of Pathology with 18 years of clinical and laboratory-medicine experience, currently department in-charge of Blood Bank and Pathology at Suleman Roshan Medical College Hospital, Pakistan. Dr. Irshad checks pages for medical accuracy and safety advice. Professional profiles: <a href="{REVIEWER_ORCID}" rel="me noopener" target="_blank">ORCID</a> · <a href="{REVIEWER_LINKEDIN}" rel="me noopener" target="_blank">LinkedIn</a>. He is a physician, not a dentist, and he does not set or verify individual dental fees; prices come from the published sources listed on our <a href="/methodology/">methodology page</a>.</p>
 <h2>What we do not do</h2><ul><li>We do not accept payment from dentists, clinics or product makers to appear on the site.</li><li>We do not recommend individual dentists.</li><li>We do not diagnose or give individual treatment advice.</li></ul>
 <p>The site is supported by display advertising. Advertisers have no say in what we publish. Questions or corrections: <a href="/contact/">contact us</a>.</p>"""),
         "methodology": ("How We Price Dental Procedures", "Where every dental price on this site comes from, how we handle conflicting numbers, and how often we check them.",

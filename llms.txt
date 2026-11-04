@@ -1,6 +1,6 @@
 # Dental Price Guide
 
-> Independent guide to what dental procedures cost in the United States. Every price is a national figure taken from a named, published source (Delta Dental out-of-network claims data 2021–2025; Synchrony/CareCredit Average Procedural Cost Study 2023–2024; GoodRx; Pearl dental cost data based on the ADA fee survey). Pages are medically reviewed by Dr. Faisal Irshad, MBBS. Prices last checked October 2026.
+> Independent guide to what dental procedures cost in the United States. Every price is a national figure taken from a named, published source (Delta Dental out-of-network claims data 2021–2025; Synchrony/CareCredit Average Procedural Cost Study 2023–2024; GoodRx; Pearl dental cost data based on the ADA fee survey). Pages are medically reviewed by Dr. Faisal Irshad, MBBS, M.Phil Chemical Pathology. Prices last checked October 2026.
 
 ## About
 - [Methodology: where our prices come from](https://www.dentalpriceguide.com/methodology/)
