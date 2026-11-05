@@ -46,6 +46,7 @@
  "filling-cost-with-insurance": "2026-10-30",
  "filling-cost-without-insurance": "2026-11-01",
  "flexible-dentures-cost": "2026-10-21",
+ "free-dental-implants-and-grants": "2026-11-05",
  "full-mouth-dental-implants-cost": "2026-10-21",
  "gum-graft-before-and-after": "2026-11-02",
  "gum-graft-cost": "2026-10-21",
@@ -54,6 +55,7 @@
  "how-long-do-braces-take": "2026-10-26",
  "how-long-do-veneers-last": "2026-10-26",
  "how-long-does-a-root-canal-take": "2026-10-21",
+ "how-long-does-teeth-whitening-last": "2026-11-05",
  "how-long-does-wisdom-teeth-removal-take": "2026-10-26",
  "how-to-clean-teeth-with-braces": "2026-10-29",
  "impacted-wisdom-teeth": "2026-10-21",
@@ -83,6 +85,7 @@
  "tooth-abscess-stages": "2026-10-26",
  "tooth-abscess-treatment": "2026-10-29",
  "tooth-extraction-cost": "2026-10-21",
+ "tooth-extraction-cost-without-insurance": "2026-11-05",
  "tooth-extraction-healing-stages": "2026-10-21",
  "types-of-braces": "2026-10-31",
  "types-of-dental-implants": "2026-10-21",
@@ -91,6 +94,7 @@
  "veneers-cost": "2026-10-21",
  "veneers-cost-with-insurance": "2026-10-29",
  "veneers-vs-crowns": "2026-10-28",
+ "veneers-vs-implants": "2026-11-05",
  "what-are-veneers": "2026-10-21",
  "what-can-you-eat-with-braces": "2026-10-21",
  "what-is-a-dental-bridge": "2026-10-21",
@@ -104,5 +108,6 @@
  "why-do-we-have-wisdom-teeth": "2026-10-21",
  "wisdom-teeth-pain": "2026-10-21",
  "wisdom-teeth-recovery-timeline": "2026-10-21",
- "wisdom-teeth-removal-cost": "2026-10-21"
+ "wisdom-teeth-removal-cost": "2026-10-21",
+ "wisdom-teeth-removal-cost-without-insurance": "2026-11-05"
 }

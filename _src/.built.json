@@ -53,6 +53,7 @@
 "filling-cost-with-insurance",
 "filling-cost-without-insurance",
 "flexible-dentures-cost",
+"free-dental-implants-and-grants",
 "full-mouth-dental-implants-cost",
 "gum-graft-before-and-after",
 "gum-graft-cost",
@@ -61,6 +62,7 @@
 "how-long-do-braces-take",
 "how-long-do-veneers-last",
 "how-long-does-a-root-canal-take",
+"how-long-does-teeth-whitening-last",
 "how-long-does-wisdom-teeth-removal-take",
 "how-to-clean-teeth-with-braces",
 "impacted-wisdom-teeth",
@@ -96,6 +98,7 @@
 "tooth-abscess-stages",
 "tooth-abscess-treatment",
 "tooth-extraction-cost",
+"tooth-extraction-cost-without-insurance",
 "tooth-extraction-healing-stages",
 "types-of-braces",
 "types-of-dental-implants",
@@ -104,6 +107,7 @@
 "veneers-cost",
 "veneers-cost-with-insurance",
 "veneers-vs-crowns",
+"veneers-vs-implants",
 "what-are-veneers",
 "what-can-you-eat-with-braces",
 "what-is-a-dental-bridge",
@@ -117,5 +121,6 @@
 "why-do-we-have-wisdom-teeth",
 "wisdom-teeth-pain",
 "wisdom-teeth-recovery-timeline",
-"wisdom-teeth-removal-cost"
+"wisdom-teeth-removal-cost",
+"wisdom-teeth-removal-cost-without-insurance"
 ]
